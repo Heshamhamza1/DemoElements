@@ -21,10 +21,14 @@ public class DOMElements {
 
         shadowButton.click();
 
+
         Thread.sleep(1000);
 
         Alert alert = driver.switchTo().alert();
 
         System.out.println(alert.getText());
+
+        alert.accept();
+
     }
 }

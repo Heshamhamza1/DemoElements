@@ -19,7 +19,11 @@
             <artifactId>selenium-java</artifactId>
             <version>4.18.1</version> <!-- or latest -->
         </dependency>
-
+        <dependency>
+            <groupId>com.aventstack</groupId>
+            <artifactId>extentreports</artifactId>
+            <version>5.0.9</version>
+        </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>

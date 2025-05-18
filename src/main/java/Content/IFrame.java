@@ -16,15 +16,12 @@ public class IFrame {
 
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
-        // Wait for and click the navigation to iframe section
         WebElement navIframeButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("[data-test='nav-iframes']")));
         navIframeButton.click();
 
-        // Switch to the first iframe
         WebElement firstIframe = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[data-test='iframe-iframe1']")));
         driver.switchTo().frame(firstIframe);
 
-        // Click the button inside the first iframe
         WebElement button = wait.until(ExpectedConditions.elementToBeClickable(By.tagName("button")));
         button.click();
         driver.switchTo().defaultContent();
@@ -35,7 +32,6 @@ public class IFrame {
         WebElement secondFrame = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[data-test='iframe-iframe2']")));
         driver.switchTo().frame(secondFrame);
 
-        // Click the button inside the first iframe
         WebElement button1 = wait.until(ExpectedConditions.elementToBeClickable(By.tagName("button")));
         button1.click();
         driver.switchTo().defaultContent();

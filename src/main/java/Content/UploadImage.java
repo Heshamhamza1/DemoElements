@@ -15,6 +15,7 @@ public class UploadImage {
         WebElement ImageButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("[data-test='nav-broken-images']")));
         ImageButton.click();
 
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[data-test='image-0'")));
         WebElement image1 = driver.findElement(By.cssSelector("[data-test='image-0'"));
         System.out.println(image1.getAttribute("src") + "\n" + "Image Found !");
 
