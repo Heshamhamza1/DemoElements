@@ -7,25 +7,20 @@ import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 public class Main {
     public static ExtentReports extent;
     public static ExtentTest test;
-    public  static ExtentReports exten1;
+    public static ExtentSparkReporter spark;
+    public static ExtentSparkReporter spark1;
+
     public static void startReport() {
-        ExtentSparkReporter spark = new ExtentSparkReporter("test-output/ExtentReport.html");
-        ExtentSparkReporter spark1 = new ExtentSparkReporter("test-output/TestContent.html");
+        spark = new ExtentSparkReporter("test-output/ExtentReport.html");
+
+        spark1 = new ExtentSparkReporter("test-output/TestContent.html");
+
         extent = new ExtentReports();
-        extent.attachReporter(spark);
-        exten1 = new ExtentReports();
-        exten1.attachReporter(spark1);
+        extent.attachReporter(spark,spark1);
     }
 
     public static void flushReport() {
+
         extent.flush();
     }
-    public static void runReport()
-    {
-
-        exten1.flush();
-
-    }
-
-
 }

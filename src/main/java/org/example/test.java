@@ -11,11 +11,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.*;
 
+import java.io.IOException;
+
 public class test {
     WebDriver driver;
 
     @BeforeTest
-    public void setup() {
+    public void setup() throws IOException {
 
         Main.startReport();
         WebDriverManager.chromedriver().setup();
