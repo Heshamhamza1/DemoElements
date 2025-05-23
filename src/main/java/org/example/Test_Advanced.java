@@ -27,12 +27,14 @@ public class Test_Advanced {
         test.PerformRightClick(driver);
 
     }
+
     @Test
     public void TestNotifications()
     {
         Notify obj = new Notify();
         obj.getNotifications(driver);
     }
+
     @Test
     public void Count()
     {
