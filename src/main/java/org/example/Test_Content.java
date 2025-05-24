@@ -52,8 +52,8 @@ public void Iframe()
 public void BrokenImage()
 {
     Main.test = Main.extent.createTest("Broken Image test");
-    UploadImage I = new UploadImage();
-    I.Image(driver);
+    UploadImage obj = new UploadImage();
+    obj.Image(driver);
     Main.test.log(Status.PASS, "Broken images test completed.");
 }
 @Test

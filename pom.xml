@@ -21,12 +21,15 @@
                 <version>3.13.0</version>
                 <configuration>
                     <fork>true</fork>
+                    <source>23</source>   <!-- Replace with your actual JDK version -->
+                    <target>23</target>
                     <compilerArgs>
                         <arg>--add-exports</arg>
                         <arg>jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED</arg>
                     </compilerArgs>
                 </configuration>
             </plugin>
+
 
         </plugins>
 
