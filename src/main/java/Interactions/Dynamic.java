@@ -1,37 +1,28 @@
 package Interactions;
 
-import org.openqa.selenium.By;
+import BaseClass.BaseClass;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 import java.util.List;
 
-public class Dynamic {
-    WebDriver driver;
+public class Dynamic extends BaseClass {
 
     public Dynamic(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
+
     public void task() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         // Wait and click the navigation link
-        WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(
-                By.cssSelector("[data-test='nav-dynamic-elements']")
-        ));
+        WebElement element = waitForElement("css", "[data-test='nav-dynamic-elements']", "visible", 1);
         element.click();
 
 
-        List<WebElement> list = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(
-                By.cssSelector("[class*='space-y-2']")
-        ));
+        List<WebElement> list = waitForElements("css","[class*='space-y-2']", "present", 10);
 
         for (WebElement data : list) {
-            System.out.println(data.getText());
+            print(data.getText());
             break;
         }
     }

@@ -1,24 +1,19 @@
 package Interactions;
 
-import org.openqa.selenium.By;
+import BaseClass.BaseClass;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
-
-public class Slider {
-    private WebDriverWait wait;
+public class Slider extends BaseClass {
+    public Slider(WebDriver driver) {
+        super(driver);
+    }
     public void slide(WebDriver driver){
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement nav = wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector("[data-test='nav-slider']"))));
-        nav.click();
-        Actions actions = new Actions(driver);
-        actions.clickAndHold(driver.findElement(By.cssSelector("[data-test='slider']"))).moveByOffset(390,0).perform();
 
-        WebElement value = driver.findElement(By.cssSelector("[data-test='slider-value']"));
-        System.out.println(value.getText());
+        waitForElement("css", "[data-test='nav-slider']", "clickable", 10).click();
+        performAction("clickandhold",Element("css", "[data-test='slider']"), null);
+
+        WebElement value = Element("css","[data-test='slider-value']");
+        print(value.getText());
     }
 }

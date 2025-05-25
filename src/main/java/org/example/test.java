@@ -44,7 +44,7 @@ public class test {
     public void hover()
     {
         Main.test = Main.extent.createTest("Hover Elements");
-        Hover e = new Hover();
+        Hover e = new Hover(driver);
         e.PerformHover(driver);
         e.PerformHover2(driver);
         e.PerformHover3(driver);
@@ -54,7 +54,7 @@ public class test {
     public void key()
     {
         Main.test = Main.extent.createTest("Perform Keys Elements");
-        Keyboard click = new Keyboard();
+        Keyboard click = new Keyboard(driver);
         click.CheckKeys(driver);
         Main.test.log(Status.PASS, "Perform Keys completed.");
     }
@@ -62,7 +62,7 @@ public class test {
     public void Slide()
     {
         Main.test = Main.extent.createTest("Sliding Elements");
-        Slider slide = new Slider();
+        Slider slide = new Slider(driver);
         slide.slide(driver);
         Main.test.log(Status.PASS, "Sliding Elements completed.");
     }
