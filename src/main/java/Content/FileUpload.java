@@ -1,5 +1,6 @@
 package Content;
 
+import BaseClass.BaseClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -14,23 +15,26 @@ import java.time.Duration;
 import java.util.Base64;
 import java.util.List;
 
-public class FileUpload {
-    WebDriverWait wait;
-    public void SelectFile(WebDriver driver) throws InterruptedException, AWTException {
-        WebElement content = driver.findElement(By.cssSelector("[data-test='nav-file-upload']"));
-        wait = new WebDriverWait(driver,Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOf(content));
-        content.click();
+public class FileUpload extends BaseClass {
 
-        WebElement FileInput = driver.findElement(By.cssSelector("[data-test='file-input']"));
+    WebDriverWait wait;
+
+    public FileUpload(WebDriver driver) {
+        super(driver);
+    }
+
+    public void SelectFile(WebDriver driver) throws InterruptedException, AWTException {
+        waitForElement("css", "[data-test='nav-file-upload']", "clickable", 10).click();
+
+        WebElement FileInput = Element("css", "[data-test='file-input']");
         FileInput.sendKeys("C:\\Users\\hisham\\Downloads\\hesham hamza resume_1.pdf");
     }
+
     public void DragDropFile (WebDriver driver) throws IOException, InterruptedException {
-        WebElement content = driver.findElement(By.cssSelector("[data-test='nav-file-upload']"));
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOf(content));
+        WebElement content = waitForElement("css", "[data-test='nav-file-upload']", "clickable", 10);
         content.click();
-        WebElement DragZone = driver.findElement(By.cssSelector("[data-test='drop-zone']"));
+
+        WebElement DragZone = Element("css", "[data-test='drop-zone']");
         String FilePath = "C:\\Users\\hisham\\Downloads\\hesham hamza resume_1.pdf";
         byte [] FileContent = Files.readAllBytes(Paths.get(FilePath));
         String base64File = Base64.getEncoder().encodeToString(FileContent);
@@ -59,7 +63,7 @@ public class FileUpload {
         List<WebElement> list = driver.findElements(By.cssSelector("[data-test='uploaded-file-0']"));
         for (WebElement ul : list)
         {
-            System.out.println(ul.getText());
+            print(ul.getText());
         }
     }
 }

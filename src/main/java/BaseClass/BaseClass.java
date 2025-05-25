@@ -14,7 +14,7 @@ public class BaseClass {
 
     protected WebDriver driver;
     public BaseClass(WebDriver driver) {
-        this.driver = driver;  // Initialize the WebDriver instance
+        this.driver = driver;
     }
 
     public WebElement waitForElement(String type, String locator, String waitType, int timeoutInSeconds) {
@@ -41,7 +41,6 @@ public class BaseClass {
             case "present":
                 return wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(by));
 
-
             default:
                 throw new IllegalArgumentException("Invalid wait type for list: " + waitType);
         }
@@ -59,7 +58,7 @@ public class BaseClass {
                 return By.name(value);
             case "class":
                 return By.className(value);
-                case "tag":
+            case "tag":
                 return By.tagName(value);
             default:
                 throw new IllegalArgumentException("Invalid locator type: " + type);
@@ -68,20 +67,24 @@ public class BaseClass {
 
     public WebElement Element(String type, String locator) {
         By by = getBy(type, locator);
-        return driver.findElement(by);  // Find and return the WebElement based on the locator
+        return driver.findElement(by);
     }
+
+
     public String print(String message) {
-        System.out.println(message);  // Noncompliant, output directly to System.out without a logger
-        return message;  // Return the message for further use
-    }
 
-    public WebDriverWait getwait() {
-        return new WebDriverWait(driver, Duration.ofSeconds(10));
+        System.out.println(message);
 
+        if (message == null || message.isEmpty()) {
+            throw new IllegalArgumentException("Message cannot be null or empty");
+            }
+
+        else  return message;
     }
 
     public void acceptAlert() {
         Alert alert = driver.switchTo().alert();
+        System.out.println(alert.getText());
         alert.accept();
     }
 
@@ -90,7 +93,9 @@ public class BaseClass {
 
         switch (actionType.toLowerCase()) {
             case "clickandhold":
-                actions.clickAndHold(source).moveByOffset(390,0).perform();
+             int xOffset = 390;
+             int yOffset = 0;
+             actions.clickAndHold(source).moveByOffset(xOffset,yOffset).perform();
                 break;
 
             case "draganddrop":
@@ -112,5 +117,11 @@ public class BaseClass {
             default:
                 throw new IllegalArgumentException("Unsupported action type: " + actionType);
         }
+    }
+    public void switchToFrame(WebElement frame) {
+        driver.switchTo().frame(frame);
+    }
+    public void switchToDefaultContent() {
+        driver.switchTo().defaultContent();
     }
 }

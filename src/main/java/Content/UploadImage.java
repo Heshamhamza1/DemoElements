@@ -1,5 +1,6 @@
 package Content;
 
+import BaseClass.BaseClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,22 +9,25 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class UploadImage {
+public class UploadImage extends BaseClass {
+
     WebDriverWait wait;
+
+    public UploadImage(WebDriver driver) {
+        super(driver);
+    }
+
     public void Image(WebDriver driver) {
-        wait= new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement ImageButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("[data-test='nav-broken-images']")));
-        ImageButton.click();
+        waitForElement("css", "[data-test='nav-broken-images']", "clickable", 10).click();
 
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[data-test='image-0'")));
-        WebElement image1 = driver.findElement(By.cssSelector("[data-test='image-0'"));
-        System.out.println(image1.getAttribute("src") + "\n" + "Image Found !");
+        WebElement image1 =waitForElement("css", "[data-test='image-0']", "visible", 10);
+        print(image1.getAttribute("src") + "\n" + "Image Found !");
 
-        WebElement image2 = driver.findElement(By.cssSelector("[data-test='image-1'"));
-        System.out.println(image2.getAttribute("src") + "\n" + "This image URL does not exist");
+        WebElement image2 = waitForElement("css", "[data-test='image-1']", "visible", 10);
+        print(image2.getAttribute("src") + "\n" + "This image URL does not exist");
 
-        WebElement image3 = driver.findElement(By.cssSelector("[data-test='image-2'"));
-        System.out.println(image3.getAttribute("src") + "\n" + "This invalid URL format");
+        WebElement image3 = waitForElement("css", "[data-test='image-2']", "visible", 10);
+        print(image3.getAttribute("src") + "\n" + "This invalid URL format");
     }
     }
 

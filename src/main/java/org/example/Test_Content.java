@@ -25,7 +25,7 @@ public class Test_Content {
 public void File() throws InterruptedException, AWTException, IOException {
     Main.test = Main.extent.createTest("Upload files");
 
-    FileUpload obj = new FileUpload();
+    FileUpload obj = new FileUpload(driver);
     obj.SelectFile(driver);
     obj.DragDropFile(driver);
     Main.test.log(Status.PASS, "Uploaded files completed.");
@@ -35,7 +35,7 @@ public void File() throws InterruptedException, AWTException, IOException {
 public void Fileup()
 {
     Main.test = Main.extent.createTest("Download files");
-    FileDownload obj = new FileDownload();
+    FileDownload obj = new FileDownload(driver);
     obj.Download(driver);
     Main.test.log(Status.PASS, "Files Download completed.");
 }
@@ -43,7 +43,7 @@ public void Fileup()
 public void Iframe()
 {
     Main.test = Main.extent.createTest("Iframe tests");
-    IFrame obj = new IFrame();
+    IFrame obj = new IFrame(driver);
     obj.iframe(driver);
     obj.iframe2(driver);
     Main.test.log(Status.PASS, "Iframes test completed.");
@@ -52,14 +52,14 @@ public void Iframe()
 public void BrokenImage()
 {
     Main.test = Main.extent.createTest("Broken Image test");
-    UploadImage obj = new UploadImage();
+    UploadImage obj = new UploadImage(driver);
     obj.Image(driver);
     Main.test.log(Status.PASS, "Broken images test completed.");
 }
 @Test
 public void Alert() throws InterruptedException {
     Main.test = Main.extent.createTest("Check Alert test");
-    DOMElements a = new DOMElements();
+    DOMElements a = new DOMElements(driver);
     a.FindDOM(driver);
     Main.test.log(Status.PASS, "Alert test Completed");
 }

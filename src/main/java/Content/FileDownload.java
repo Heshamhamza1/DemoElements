@@ -1,5 +1,6 @@
 package Content;
 
+import BaseClass.BaseClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,17 +9,19 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class FileDownload {
-    WebDriverWait wait;
+public class FileDownload extends BaseClass {
+
+
+    public FileDownload(WebDriver driver) {
+        super(driver);
+    }
 
     public void Download(WebDriver driver)
     {
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.cssSelector("[data-test='nav-file-download']")))).click();
+        waitForElement("css", "[data-test='nav-file-download']", "clickable", 10).click();
 
-        WebElement DownloadBTN = driver.findElement(By.cssSelector("[data-test='download-button-0']"));
-        DownloadBTN.click();
-        WebElement DownloadedFile = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[3]/main/div/div/div/div/div[1]/div/div/div/h3"));
-        System.out.println(DownloadedFile.getText()+ " " + "File Downloaded Successfully !");
+        waitForElement("css", "[data-test='download-button-0']", "clickable", 3).click();
+        WebElement DownloadedFile = waitForElement("xpath", "//*[@id=\"root\"]/div/div[3]/main/div/div/div/div/div[1]/div/div/div/h3", "visible", 3);
+        print(DownloadedFile.getText()+ " " + "File Downloaded Successfully !");
     }
 }
