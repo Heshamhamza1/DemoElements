@@ -21,17 +21,11 @@
                 <version>3.13.0</version>
                 <configuration>
                     <fork>true</fork>
-                    <source>23</source>   <!-- Replace with your actual JDK version -->
+                    <source>23</source>
                     <target>23</target>
-                    <compilerArgs>--enable-preview
-                        <arg>jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED</arg>
-                    </compilerArgs>
                 </configuration>
             </plugin>
-
-
         </plugins>
-
 </build>
     <dependencies>
         <dependency>
@@ -55,12 +49,6 @@
             <artifactId>testng</artifactId>
             <version>7.10.2</version>
             <scope>compile</scope>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
-        <dependency>
-            <groupId>io.github.bonigarcia</groupId>
-            <artifactId>webdrivermanager</artifactId>
-            <version>6.0.1</version>
         </dependency>
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
