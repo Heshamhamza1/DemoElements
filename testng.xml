@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="MyTestSuite">
+    <test name="RegressionTests">
+        <classes>
+            <class name="org.example.test"/>
+            <class name="org.example.Test_Content"/>
+            <class name="org.example.Test_Advanced"/>
+        </classes>
+    </test>
+</suite>

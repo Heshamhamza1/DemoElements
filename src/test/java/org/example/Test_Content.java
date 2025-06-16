@@ -14,7 +14,8 @@ public class Test_Content {
     WebDriver driver;
 
     @BeforeTest
-    public void setup() throws IOException {
+    public void setup() throws IOException, InterruptedException {
+        Thread.sleep(10000);
         Main.startReport();
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();

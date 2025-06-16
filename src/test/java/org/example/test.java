@@ -15,7 +15,6 @@ import java.io.IOException;
 
 public class test {
     WebDriver driver;
-
     @BeforeTest
     public void setup() throws IOException {
 
