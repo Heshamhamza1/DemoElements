@@ -1,5 +1,7 @@
 package org.example;
 import Advanced.*;
+import BaseClass.RetryAnalyzer;
+import BaseClass.TestListener;
 import com.aventstack.extentreports.Status;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
@@ -8,29 +10,29 @@ import org.testng.annotations.*;
 import java.awt.*;
 import java.io.IOException;
 
+@Listeners(TestListener.class)
 public class Test_Advanced {
     WebDriver driver;
 
     @BeforeTest
     public void setup() throws IOException, InterruptedException {
-        Thread.sleep(10000);
         Main.startReport();
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.get("https://moatazeldebsy.github.io/test-automation-practices/#/drag-drop");
         driver.manage().window().maximize();
     }
-    @Test
+
+    @Test(retryAnalyzer = RetryAnalyzer.class)
     public void TestRightclick()
     {
         Main.test = Main.extent.createTest("Test Right Click Context Menu");
         ContextMenu test = new ContextMenu();
         test.PerformRightClick(driver);
         Main.test.log(Status.PASS, "Test Right Click Context Menu completed.");
-
     }
 
-    @Test
+    @Test(retryAnalyzer = RetryAnalyzer.class)
     public void TestNotifications()
     {
         Main.test = Main.extent.createTest("Test Notifications");
@@ -39,7 +41,7 @@ public class Test_Advanced {
         Main.test.log(Status.PASS, "Test Notifications completed.");
     }
 
-    @Test
+    @Test(retryAnalyzer = RetryAnalyzer.class)
     public void Count()
     {
         Main.test = Main.extent.createTest("Test Count");
@@ -47,7 +49,7 @@ public class Test_Advanced {
         obj.getCount(driver);
         Main.test.log(Status.PASS, "Test Count completed.");
     }
-@Test
+@Test(retryAnalyzer = RetryAnalyzer.class)
 public void AuthTest()
 {
     Main.test = Main.extent.createTest("Test Authentication");
@@ -55,7 +57,7 @@ public void AuthTest()
     auth.login(driver,"admin","admin");
     Main.test.log(Status.PASS, "Test Authentication completed.");
 }
-@Test
+@Test(retryAnalyzer = RetryAnalyzer.class)
 public void CheckBoxTest()
 {
     Main.test = Main.extent.createTest("Test CheckBox");
@@ -63,14 +65,14 @@ public void CheckBoxTest()
     obj.PerformCheck(driver);
     Main.test.log(Status.PASS, "Test CheckBox completed.");
 }
-@Test
+@Test(retryAnalyzer = RetryAnalyzer.class)
 public void ExitIntentTest() throws AWTException {
     Main.test = Main.extent.createTest("Test Exit Intent");
     ExitIntent obj = new ExitIntent(driver);
     obj.PerformExitIntent(driver);
     Main.test.log(Status.PASS, "Test Exit Intent completed.");
 }
-@Test
+@Test(retryAnalyzer = RetryAnalyzer.class)
 public void getalertTest() throws AWTException {
     Main.test = Main.extent.createTest("Get Alerts Test");
     Alerts obj = new Alerts();

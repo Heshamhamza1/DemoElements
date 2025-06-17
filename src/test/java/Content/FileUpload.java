@@ -25,7 +25,7 @@ public class FileUpload extends BaseClass {
         waitForElement("css", "[data-test='nav-file-upload']", "clickable", 10).click();
 
         WebElement FileInput = Element("css", "[data-test='file-input']");
-        FileInput.sendKeys("C:\\Users\\hisham\\Downloads\\hesham hamza resume_1.pdf");
+        FileInput.sendKeys("C:\\Users\\Dafa\\Downloads\\hesham hamza resume_1.pdf");
     }
 
     public void DragDropFile (WebDriver driver) throws IOException, InterruptedException {
@@ -33,7 +33,7 @@ public class FileUpload extends BaseClass {
         content.click();
 
         WebElement DragZone = Element("css", "[data-test='drop-zone']");
-        String FilePath = "C:\\Users\\hisham\\Downloads\\hesham hamza resume_1.pdf";
+        String FilePath = "C:\\Users\\Dafa\\Downloads\\hesham hamza resume_1.pdf";
         byte [] FileContent = Files.readAllBytes(Paths.get(FilePath));
         String base64File = Base64.getEncoder().encodeToString(FileContent);
         String jsScript = "var dropTarget = arguments[0];\n" +

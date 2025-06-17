@@ -1,5 +1,7 @@
 package org.example;
 
+import BaseClass.RetryAnalyzer;
+import BaseClass.TestListener;
 import Content.*;
 import com.aventstack.extentreports.Status;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -10,29 +12,28 @@ import org.testng.annotations.*;
 import java.awt.*;
 import java.io.IOException;
 
+@Listeners(TestListener.class)
 public class Test_Content {
     WebDriver driver;
 
     @BeforeTest
     public void setup() throws IOException, InterruptedException {
-        Thread.sleep(10000);
         Main.startReport();
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.get("https://moatazeldebsy.github.io/test-automation-practices/#/drag-drop");
         driver.manage().window().maximize();
     }
-@Test
+@Test(retryAnalyzer = RetryAnalyzer.class)
 public void File() throws InterruptedException, AWTException, IOException {
     Main.test = Main.extent.createTest("Upload files");
-
     FileUpload obj = new FileUpload(driver);
     obj.SelectFile(driver);
     obj.DragDropFile(driver);
     Main.test.log(Status.PASS, "Uploaded files completed.");
 
 }
-@Test
+@Test(retryAnalyzer = RetryAnalyzer.class)
 public void Fileup()
 {
     Main.test = Main.extent.createTest("Download files");
@@ -40,7 +41,7 @@ public void Fileup()
     obj.Download(driver);
     Main.test.log(Status.PASS, "Files Download completed.");
 }
-@Test
+@Test(retryAnalyzer = RetryAnalyzer.class)
 public void Iframe()
 {
     Main.test = Main.extent.createTest("Iframe tests");
@@ -49,7 +50,7 @@ public void Iframe()
     obj.iframe2(driver);
     Main.test.log(Status.PASS, "Iframes test completed.");
 }
-@Test
+@Test(retryAnalyzer = RetryAnalyzer.class)
 public void BrokenImage()
 {
     Main.test = Main.extent.createTest("Broken Image test");
@@ -57,7 +58,7 @@ public void BrokenImage()
     obj.Image(driver);
     Main.test.log(Status.PASS, "Broken images test completed.");
 }
-@Test
+@Test(retryAnalyzer = RetryAnalyzer.class)
 public void Alert() throws InterruptedException {
     Main.test = Main.extent.createTest("Check Alert test");
     DOMElements a = new DOMElements(driver);

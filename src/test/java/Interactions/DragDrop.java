@@ -3,6 +3,7 @@ package Interactions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import BaseClass.BaseClass;
+import org.testng.Assert;
 
 public class DragDrop extends BaseClass {
 
@@ -11,7 +12,6 @@ public class DragDrop extends BaseClass {
     }
 
     public void performDragAndDrop() {
-
         WebElement source = waitForElement("css", "[data-test='drag-handle-Item 1']", "visible", 1);
         WebElement target = waitForElement("css", "[data-test='drag-handle-Item 2']", "visible", 1);
 

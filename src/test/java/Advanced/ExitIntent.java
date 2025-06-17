@@ -23,7 +23,7 @@ public class ExitIntent extends BaseClass {
         Robot robot = new Robot();
         robot.mouseMove(600, 0);
         waitForElement("css", "[data-test='exit-modal']", "visible", 5);
-        waitForElement("css", "[data-test='close-modal']", "clickable", 5);
+        waitForElement("css", "[data-test='close-modal']", "clickable", 5).click();
 
     }
 }
